@@ -87,6 +87,7 @@
         transform: none;
         filter: none;
       }
+    }
       @media (hover: none) {
   .media-card:hover,
   .media-card:hover img,
@@ -153,7 +154,7 @@ html, body {
 
       <div class="media-grid">
         <div class="media-card">
-          <video controls>
+          <video controls preload="metadata">
             <source src="assets/videos/Video 1.mp4" type="video/mp4" />
           </video>
           <div class="media-caption">Video 1</div>
