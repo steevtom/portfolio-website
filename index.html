@@ -4,208 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Steev Tom Alenchery | Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #0f172a;
-      color: #e2e8f0;
-    }
-
-    .wrap {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 20px;
-    }
-
-    h1, h2 {
-      margin: 0 0 12px;
-    }
-
-    p {
-      color: #cbd5e1;
-      line-height: 1.6;
-    }
-
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 14px;
-      margin-top: 20px;
-    }
-
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    .media-card {
-      background: #0b1220;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #334155;
-      transition: transform 220ms ease, box-shadow 220ms ease;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    .media-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    .media-card img,
-    .media-card video {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-      transition: transform 250ms ease;
-    }
-
-    .media-card:hover img {
-      transform: scale(1.02);
-    }
-
-    .media-card:hover video {
-      transform: none;
-    }
-
-    .media-caption {
-      padding: 12px 14px;
-      font-size: 0.95rem;
-      color: #94a3b8;
-    }
-
-    @media (hover: none) {
-      .media-card:hover,
-      .media-card:hover img,
-      .media-card:hover video {
-        transform: none;
-        filter: none;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .wrap {
-        padding: 14px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="wrap">
     <h1>Hi, I’m Steev Tom Alenchery 👋</h1>
     <p>Welcome to my portfolio website.</p>
 
-    <div class="card">
+    <section class="card">
       <h2>My Photo Gallery</h2>
       <p>Some moments and creative captures from my journey.</p>
+      <div id="photo-grid" class="media-grid"></div>
+    </section>
 
-      <div class="media-grid">
-        <div class="media-card"><img src="assets/images/Image 1.jpg" alt="Gallery image 1"><div class="media-caption">Image 1</div></div>
-        <div class="media-card"><img src="assets/images/Image 2.jpg" alt="Gallery image 2"><div class="media-caption">Image 2</div></div>
-        <div class="media-card"><img src="assets/images/Image 3.jpg" alt="Gallery image 3"><div class="media-caption">Image 3</div></div>
-        <div class="media-card"><img src="assets/images/Image 4.jpg" alt="Gallery image 4"><div class="media-caption">Image 4</div></div>
-        <div class="media-card"><img src="assets/images/Image 5.jpg" alt="Gallery image 5"><div class="media-caption">Image 5</div></div>
-        <div class="media-card"><img src="assets/images/Image 6.jpg" alt="Gallery image 6"><div class="media-caption">Image 6</div></div>
-        <div class="media-card"><img src="assets/images/Image 7.jpg" alt="Gallery image 7"><div class="media-caption">Image 7</div></div>
-        <div class="media-card"><img src="assets/images/Image 8.JPG" alt="Gallery image 8"><div class="media-caption">Image 8</div></div>
-        <div class="media-card"><img src="assets/images/Image 9.jpg" alt="Gallery image 9"><div class="media-caption">Image 9</div></div>
-        <div class="media-card"><img src="assets/images/Image 10.jpg" alt="Gallery image 10"><div class="media-caption">Image 10</div></div>
-        <div class="media-card"><img src="assets/images/Image 11.jpg" alt="Gallery image 11"><div class="media-caption">Image 11</div></div>
-      </div>
-    </div>
-
-    <div class="card">
+    <section class="card">
       <h2>Project Videos</h2>
       <p>Short demos of my work.</p>
+      <div id="video-grid" class="media-grid"></div>
+    </section>
 
-      <div class="media-grid">
-        <div class="media-card">
-          <video controls preload="metadata">
-            <source src="assets/videos/Video 1.mp4" type="video/mp4" />
-          </video>
-          <div class="media-caption">Video 1</div>
-        </div>
-
-        <div class="media-card">
-          <video controls preload="metadata">
-            <source src="assets/videos/Video 2.mp4" type="video/mp4" />
-          </video>
-          <div class="media-caption">Video 2</div>
-        </div>
-
-        <div class="media-card">
-          <video controls preload="metadata">
-            <source src="assets/videos/Video 3.mp4" type="video/mp4" />
-          </video>
-          <div class="media-caption">Video 3</div>
-        </div>
-
-        <div class="media-card">
-          <video controls preload="metadata">
-            <source src="assets/videos/Video 4.mp4" type="video/mp4" />
-          </video>
-          <div class="media-caption">Video 4</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
+    <section class="card">
       <h2>Contact</h2>
       <p>Email: steevtom123@gmail.com</p>
-    </div>
+      <p>GitHub: <a href="https://github.com/steevtomvalo-eng" target="_blank">steevtomvalo-eng</a></p>
+    </section>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const videos = document.querySelectorAll("video");
-      const noticeKey = "volume_notice_shown";
-
-      const toast = document.createElement("div");
-      toast.textContent = "Feel free to increase volume 🔊";
-      toast.style.position = "fixed";
-      toast.style.bottom = "20px";
-      toast.style.right = "20px";
-      toast.style.background = "rgba(15, 23, 42, 0.95)";
-      toast.style.color = "#e2e8f0";
-      toast.style.padding = "10px 14px";
-      toast.style.borderRadius = "10px";
-      toast.style.fontSize = "0.9rem";
-      toast.style.boxShadow = "0 8px 24px rgba(0,0,0,0.35)";
-      toast.style.zIndex = "9999";
-      toast.style.opacity = "0";
-      toast.style.transition = "opacity 220ms ease";
-      document.body.appendChild(toast);
-
-      const showToast = () => {
-        toast.style.opacity = "1";
-        setTimeout(() => {
-          toast.style.opacity = "0";
-        }, 2500);
-      };
-
-      videos.forEach((video) => {
-        video.volume = 0.1;
-        video.addEventListener("loadedmetadata", () => {
-          video.volume = 0.1;
-        });
-
-        video.addEventListener("play", () => {
-          if (!localStorage.getItem(noticeKey)) {
-            showToast();
-            localStorage.setItem(noticeKey, "true");
-          }
-        });
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

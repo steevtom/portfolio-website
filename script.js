@@ -1,104 +1,74 @@
-const portfolioData = {
-  videos: [
-    {
-      title: "Fashion Reel",
-      description:
-        "Replace this sample project with one of your own videos. You can use a YouTube or Vimeo embed link here.",
-      embedUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
-      tags: ["Direction", "Editing", "Cinematic"],
-    },
-    {
-      title: "Travel Story",
-      description:
-        "Use this section for short films, ad campaigns, event recaps, behind-the-scenes edits, or branded content.",
-      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      tags: ["Travel", "Motion", "Storytelling"],
-    },
-  ],
-  photos: [
-    {
-      title: "Golden Hour Portrait",
-      caption: "A sample image card for your portrait work.",
-      imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
-    },
-    {
-      title: "City Motion",
-      caption: "Use this grid to feature editorial, street, travel, or brand photography.",
-      imageUrl: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-    },
-    {
-      title: "Studio Detail",
-      caption: "Swap this placeholder with your own still-life or studio image.",
-      imageUrl: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80",
-    },
-    {
-      title: "Landscape Frame",
-      caption: "Wide photos work especially well in this masonry layout.",
-      imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
-    },
-    {
-      title: "Editorial Look",
-      caption: "Mix portraits, scenes, and detail shots to show range.",
-      imageUrl: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
-    },
-  ],
-};
-
-function createVideoCard(video, index) {
-  const card = document.createElement("article");
-  card.className = "video-card fade-in";
-  card.style.animationDelay = `${index * 120}ms`;
-
-  const tagsMarkup = video.tags
-    .map((tag) => `<span class="tag">${tag}</span>`)
-    .join("");
-
-  card.innerHTML = `
-    <iframe
-      class="video-frame"
-      src="${video.embedUrl}"
-      title="${video.title}"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-    <div class="video-copy">
-      <h3>${video.title}</h3>
-      <p>${video.description}</p>
-      <div class="video-meta">${tagsMarkup}</div>
-    </div>
-  `;
-
-  return card;
-}
-
-function createPhotoCard(photo, index) {
-  const card = document.createElement("figure");
-  card.className = "photo-card fade-in";
-  card.style.animationDelay = `${index * 100}ms`;
-
-  card.innerHTML = `
-    <img src="${photo.imageUrl}" alt="${photo.title}" loading="lazy" />
-    <figcaption class="photo-caption">
-      <strong>${photo.title}</strong>
-      <span>${photo.caption}</span>
-    </figcaption>
-  `;
-
-  return card;
-}
-
-function renderPortfolio() {
-  const videoGrid = document.getElementById("video-grid");
+document.addEventListener("DOMContentLoaded", () => {
   const photoGrid = document.getElementById("photo-grid");
+  const videoGrid = document.getElementById("video-grid");
 
-  portfolioData.videos.forEach((video, index) => {
-    videoGrid.appendChild(createVideoCard(video, index));
+  if (!photoGrid || !videoGrid) return;
+
+  const photos = [
+    "Image 1.jpg",
+    "Image 2.jpg",
+    "Image 3.jpg",
+    "Image 4.jpg",
+    "Image 5.jpg",
+    "Image 6.jpg",
+    "Image 7.jpg",
+    "Image 8.JPG",
+    "Image 9.jpg",
+    "Image 10.jpg",
+    "Image 11.jpg"
+  ];
+
+  const videos = [
+    "Video 1.mp4",
+    "Video 2.mp4",
+    "Video 3.mp4",
+    "Video 4.mp4"
+  ];
+
+  photos.forEach((file, i) => {
+    const card = document.createElement("div");
+    card.className = "media-card";
+    card.innerHTML = `
+      <img src="assets/images/${file}" alt="Gallery image ${i + 1}" loading="lazy" />
+      <div class="media-caption">Image ${i + 1}</div>
+    `;
+    photoGrid.appendChild(card);
   });
 
-  portfolioData.photos.forEach((photo, index) => {
-    photoGrid.appendChild(createPhotoCard(photo, index));
+  videos.forEach((file, i) => {
+    const card = document.createElement("div");
+    card.className = "media-card";
+    card.innerHTML = `
+      <video controls preload="metadata">
+        <source src="assets/videos/${file}" type="video/mp4" />
+      </video>
+      <div class="media-caption">Video ${i + 1}</div>
+    `;
+    videoGrid.appendChild(card);
   });
-}
 
-renderPortfolio();
+  // volume + one-time notice
+  const noticeKey = "volume_notice_shown";
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = "Feel free to increase volume 🔊";
+  document.body.appendChild(toast);
+
+  const showToast = () => {
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2500);
+  };
+
+  document.querySelectorAll("video").forEach((video) => {
+    video.volume = 0.1;
+    video.addEventListener("loadedmetadata", () => {
+      video.volume = 0.1;
+    });
+    video.addEventListener("play", () => {
+      if (!localStorage.getItem(noticeKey)) {
+        showToast();
+        localStorage.setItem(noticeKey, "true");
+      }
+    });
+  });
+});
