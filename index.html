@@ -87,6 +87,37 @@
         transform: none;
         filter: none;
       }
+      @media (hover: none) {
+  .media-card:hover,
+  .media-card:hover img,
+  .media-card:hover video {
+    transform: none;
+    filter: none;
+  }
+}
+
+/* paste your new performance code here */
+html, body {
+  background-color: #0f172a;
+}
+
+.media-card,
+.media-card img,
+.media-card video {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.media-card {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.media-card:hover img,
+.media-card:hover video {
+  transform: scale(1.03);
+  filter: none;
+}
     }
   </style>
 </head>
