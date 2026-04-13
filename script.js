@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Video 4.mp4"
   ];
 
+  // Render photos
   photos.forEach((file, i) => {
     const card = document.createElement("div");
     card.className = "media-card";
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     photoGrid.appendChild(card);
   });
 
+  // Render videos
   videos.forEach((file, i) => {
     const card = document.createElement("div");
     card.className = "media-card";
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     videoGrid.appendChild(card);
   });
 
-  // volume + one-time notice
+  // Volume + one-time notice
   const noticeKey = "volume_notice_shown";
   const toast = document.createElement("div");
   toast.className = "toast";
@@ -61,14 +63,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("video").forEach((video) => {
     video.volume = 0.1;
+
     video.addEventListener("loadedmetadata", () => {
       video.volume = 0.1;
     });
+
     video.addEventListener("play", () => {
       if (!localStorage.getItem(noticeKey)) {
         showToast();
         localStorage.setItem(noticeKey, "true");
       }
     });
+  });
+
+  // Photo lightbox (photos only)
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
+  lightbox.innerHTML = `
+    <button class="lightbox-close" aria-label="Close">Close ✕</button>
+    <img alt="Expanded photo preview" />
+  `;
+  document.body.appendChild(lightbox);
+
+  const lightboxImg = lightbox.querySelector("img");
+  const closeBtn = lightbox.querySelector(".lightbox-close");
+
+  // Open lightbox on photo click
+  photoGrid.addEventListener("click", (e) => {
+    const img = e.target.closest("img");
+    if (!img) return;
+    lightboxImg.src = img.src;
+    lightbox.classList.add("open");
+  });
+
+  // Close lightbox
+  closeBtn.addEventListener("click", () => {
+    lightbox.classList.remove("open");
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove("open");
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      lightbox.classList.remove("open");
+    }
   });
 });
