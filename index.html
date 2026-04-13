@@ -1,161 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="A cinematic portfolio website for showcasing videos and photography."
-    />
-    <title>Portfolio Showcase</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="#top">
-          <span class="brand-mark">P</span>
-          <span class="brand-text">
-            <strong>Your Name</strong>
-            <span>Visual Portfolio</span>
-          </span>
-        </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steev Tom Alenchery | Portfolio</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background:#0f172a; color:#e2e8f0; }
+    .wrap { max-width: 800px; margin: 80px auto; padding: 24px; }
+    h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    p { color:#cbd5e1; line-height: 1.6; }
+    .card { background:#1e293b; padding:20px; border-radius:12px; margin-top:20px; }
+    a { color:#38bdf8; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Hi, I’m Steev Tom Alenchery👋</h1>
+    <p>Welcome to my portfolio website.</p>
 
-        <nav class="site-nav" aria-label="Primary">
-          <a href="#work">Work</a>
-          <a href="#videos">Videos</a>
-          <a href="#photos">Photos</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
-
-      <main id="top">
-        <section class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">Filmmaker / Photographer / Storyteller</p>
-            <h1>Present your creative work with a portfolio that feels cinematic.</h1>
-            <p class="hero-text">
-              This website is designed to showcase your videos, your photography,
-              and the story behind your work in a way that feels polished enough to
-              send to clients, collaborators, and employers.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#work">See Portfolio</a>
-              <a class="button button-secondary" href="#contact">Work With Me</a>
-            </div>
-          </div>
-
-          <div class="hero-panel">
-            <div class="hero-stat">
-              <span class="stat-label">Featured format</span>
-              <strong>Video + Photography</strong>
-            </div>
-            <div class="hero-stat">
-              <span class="stat-label">Best use</span>
-              <strong>Portfolio and presentation</strong>
-            </div>
-            <div class="hero-stat">
-              <span class="stat-label">Easy updates</span>
-              <strong>Edit one file to add new projects</strong>
-            </div>
-          </div>
-        </section>
-
-        <section class="section intro-grid" id="work">
-          <article class="intro-card intro-card-large">
-            <p class="card-kicker">Portfolio direction</p>
-            <h2>Built to make your work feel intentional, not just uploaded.</h2>
-            <p>
-              Use this site to highlight selected projects, embed videos, display
-              images, and explain your creative process. Replace the placeholder
-              content with your own work whenever you are ready.
-            </p>
-          </article>
-
-          <article class="intro-card">
-            <p class="card-kicker">For clients</p>
-            <h3>Clear project highlights</h3>
-            <p>Show what you made, what role you played, and what style defines your work.</p>
-          </article>
-
-          <article class="intro-card">
-            <p class="card-kicker">For sharing</p>
-            <h3>Public-ready layout</h3>
-            <p>Once published, anyone with the link can view your portfolio on desktop or mobile.</p>
-          </article>
-        </section>
-
-        <section class="section" id="videos">
-          <div class="section-heading">
-            <p class="eyebrow">Selected Videos</p>
-            <h2>Motion work that deserves a proper stage.</h2>
-          </div>
-          <div class="card-grid" id="video-grid"></div>
-        </section>
-
-        <section class="section" id="photos">
-          <div class="section-heading">
-            <p class="eyebrow">Photography</p>
-            <h2>Still images arranged like a curated gallery.</h2>
-          </div>
-          <div class="photo-grid" id="photo-grid"></div>
-        </section>
-
-        <section class="section about-section" id="about">
-          <div class="section-heading">
-            <p class="eyebrow">About</p>
-            <h2>Tell visitors who you are and what kind of work you create.</h2>
-          </div>
-          <div class="about-layout">
-            <div class="about-copy">
-              <p>
-                Replace this paragraph with your own story. You can talk about your
-                creative style, the type of projects you enjoy, your experience,
-                and the kind of opportunities you are looking for.
-              </p>
-              <p>
-                This section works well for freelance pitches, job applications,
-                brand collaborations, and personal presentation.
-              </p>
-            </div>
-            <aside class="about-note">
-              <h3>Suggested additions</h3>
-              <ul>
-                <li>Your name and location</li>
-                <li>Your creative specialties</li>
-                <li>Brands, clients, or collaborations</li>
-                <li>A short downloadable CV link later if you want one</li>
-              </ul>
-            </aside>
-          </div>
-        </section>
-
-        <section class="section contact-section" id="contact">
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2>Ready to share your work and get discovered.</h2>
-          </div>
-          <div class="contact-card">
-            <p>
-              Update these links with your real email and socials so people can contact you directly.
-            </p>
-            <div class="contact-links">
-              <a href="mailto:you@example.com">you@example.com</a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
-            </div>
-          </div>
-        </section>
-      </main>
+    <div class="card">
+      <h2>Projects</h2>
+      <p>Coming soon. I’m currently building my first projects.</p>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <div class="card">
+      <h2>Contact</h2>
+      <p>Email: steevtom123@gmail.com</p>
+      <p>GitHub: <a href="https://github.com/steevtomvalo-eng" target="_blank">steevtomvalo-eng</a></p>
+    </div>
+  </div>
+</body>
 </html>
