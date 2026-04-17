@@ -11,6 +11,18 @@
   --shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
+[data-theme="light"] {
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-2: #e2e8f0;
+  --text: #0f172a;
+  --muted: #475569;
+  --line: #cbd5e1;
+  --accent-blue: #0ea5e9;
+  --accent-green: #16a34a;
+  --shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
 * { box-sizing: border-box; }
 
 html, body {
@@ -70,6 +82,19 @@ a:hover { color: var(--accent-green); }
   color: var(--text);
   cursor: pointer;
   font-size: 0.95rem;
+}
+.theme-toggle {
+  margin-left: auto;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.theme-toggle:hover {
+  border-color: var(--accent-blue);
 }
 .top-nav > a:hover,
 .dropbtn:hover {
@@ -142,6 +167,28 @@ a:hover { color: var(--accent-green); }
   border-color: var(--accent-blue);
 }
 
+.lead {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.back-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 999;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+
+.back-btn:hover {
+  border-color: var(--accent-blue);
+}
 /* Email button */
 .email-btn {
   display: inline-block;
@@ -305,4 +352,44 @@ button:focus-visible,
 /* 3) Better text contrast for muted copy */
 p, li {
   color: #cbd5e1; /* slightly brighter than old muted */
+}
+
+/* Contact Earth section */
+.contact-card {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(340px, 1.5fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.contact-copy code {
+  background: rgba(148, 163, 184, 0.15);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 2px 6px;
+  color: #c7d2fe;
+}
+
+.earth-stage {
+  min-height: 520px;
+  background: radial-gradient(circle at 30% 30%, #081027, #020712 65%);
+  border-radius: 14px;
+  border: 1px solid #284263;
+  overflow: hidden;
+}
+
+#earth-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 920px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+  }
+
+  .earth-stage {
+    min-height: 420px;
+  }
 }

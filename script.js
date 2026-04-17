@@ -1,4 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const themeKey = "site_theme";
+  const savedTheme = localStorage.getItem(themeKey) || "spidy";
+
+  if (savedTheme === "light") {
+    document.body.setAttribute("data-theme", "light");
+  } else {
+    document.body.removeAttribute("data-theme");
+  }
+
+  const nav = document.querySelector(".top-nav");
+  if (nav) {
+    const toggle = document.createElement("button");
+    toggle.className = "theme-toggle";
+    toggle.type = "button";
+
+    const setToggleLabel = () => {
+      const isLight = document.body.getAttribute("data-theme") === "light";
+      toggle.textContent = isLight ? "Spidy Mode 🕷️" : "Light Mode ☀️";
+    };
+
+    toggle.addEventListener("click", () => {
+      const isLight = document.body.getAttribute("data-theme") === "light";
+      if (isLight) {
+        document.body.removeAttribute("data-theme");
+        localStorage.setItem(themeKey, "spidy");
+      } else {
+        document.body.setAttribute("data-theme", "light");
+        localStorage.setItem(themeKey, "light");
+      }
+      setToggleLabel();
+    });
+
+    setToggleLabel();
+    nav.appendChild(toggle);
+  }
   const photoGrid = document.getElementById("photo-grid");
   const videoGrid = document.getElementById("video-grid");
 
