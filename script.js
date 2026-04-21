@@ -1,39 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const themeKey = "site_theme";
-  const savedTheme = localStorage.getItem(themeKey) || "spidy";
+  const root = document.documentElement;
+  const themeStorageKey = "theme_preference";
 
-  if (savedTheme === "light") {
-    document.body.setAttribute("data-theme", "light");
-  } else {
-    document.body.removeAttribute("data-theme");
-  }
+  const getPreferredTheme = () => {
+    const saved = localStorage.getItem(themeStorageKey);
+    if (saved === "light" || saved === "dark") return saved;
+    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  };
 
-  const nav = document.querySelector(".top-nav");
-  if (nav) {
+  const applyTheme = (theme) => {
+    root.setAttribute("data-theme", theme);
+    const toggle = document.querySelector(".theme-toggle");
+    if (!toggle) return;
+    toggle.setAttribute("aria-pressed", String(theme === "light"));
+    toggle.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode");
+    toggle.classList.toggle("is-light", theme === "light");
+  };
+
+  const injectThemeToggle = () => {
+    const nav = document.querySelector(".top-nav");
+    if (!nav || nav.querySelector(".theme-toggle")) return;
+
     const toggle = document.createElement("button");
     toggle.className = "theme-toggle";
     toggle.type = "button";
-
-    const setToggleLabel = () => {
-      const isLight = document.body.getAttribute("data-theme") === "light";
-      toggle.textContent = isLight ? "Spidy Mode 🕷️" : "Light Mode ☀️";
-    };
+    toggle.innerHTML = `
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
+      <span class="theme-switch" aria-hidden="true"><span class="theme-knob"></span></span>
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
+    `;
 
     toggle.addEventListener("click", () => {
-      const isLight = document.body.getAttribute("data-theme") === "light";
-      if (isLight) {
-        document.body.removeAttribute("data-theme");
-        localStorage.setItem(themeKey, "spidy");
-      } else {
-        document.body.setAttribute("data-theme", "light");
-        localStorage.setItem(themeKey, "light");
-      }
-      setToggleLabel();
+      const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      localStorage.setItem(themeStorageKey, nextTheme);
+      applyTheme(nextTheme);
     });
 
-    setToggleLabel();
     nav.appendChild(toggle);
-  }
+  };
+
+  injectThemeToggle();
+  applyTheme(getPreferredTheme());
+
   const photoGrid = document.getElementById("photo-grid");
   const videoGrid = document.getElementById("video-grid");
 
@@ -55,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
       photoGrid.appendChild(card);
     });
 
-    // Lightbox for images
     const lightbox = document.createElement("div");
     lightbox.className = "lightbox";
     lightbox.innerHTML = `<button class="lightbox-close">Close ✕</button><img alt="Expanded photo preview" />`;
@@ -90,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
       videoGrid.appendChild(card);
     });
 
-    // Volume toast
     const noticeKey = "volume_notice_shown";
     const toast = document.createElement("div");
     toast.className = "toast";
